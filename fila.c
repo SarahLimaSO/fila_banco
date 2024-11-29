@@ -4,7 +4,7 @@
 
 //criterio de parada bubble sort eh se n entrar no if numero ant eh maior q atual
 
-//Create a new line(fila)
+//Create a new queue(fila)
 Fila* create_fila(){
     Fila *newfila = malloc(sizeof(Fila));
 
@@ -19,7 +19,7 @@ Fila* create_fila(){
     return newfila;
 }
 
-//Insert a new node in the end of the line
+//Insert a new node in the end of the queue
 void insert_node(Fila *fila, int value){
     Node *new = malloc(sizeof(Node));
 
@@ -32,12 +32,12 @@ void insert_node(Fila *fila, int value){
     new->previous = fila->last;
     new->next = NULL;
 
-    //If the line is not empty
+    //If the queue is not empty
     if(fila->last != NULL){
         fila->last->next = new;
     }
 
-    //If the line is empty
+    //If the queue is empty
     else{
         fila->first = new;
     }
@@ -45,14 +45,14 @@ void insert_node(Fila *fila, int value){
     fila->last = new;
 }
 
-//Verify if the line is empty
+//Verify if the queue is empty
 int empty_fila(Fila *fila){
 
     int empty = (fila->last == NULL);
     return empty;
 }
 
-//Remove the node of the beginning of the line
+//Remove the node of the beginning of the queue
 int remove_node(Fila *fila){
 
     if(empty_fila(fila)){
@@ -63,7 +63,7 @@ int remove_node(Fila *fila){
     Node* temp = fila->first;
     int age = temp->age;
 
-    //If the element is the first of the line
+    //If the element is the first of the queue
     if (temp == fila->first){
         fila->first = temp->next;
     }
@@ -71,7 +71,7 @@ int remove_node(Fila *fila){
         temp->previous->next = temp->next;
     }
 
-    //If the element is the last of the line
+    //If the element is the last of the queue
     if(temp == fila->last){
         fila->last = temp->previous;
     }
@@ -83,7 +83,7 @@ int remove_node(Fila *fila){
     return age;
 }
 
-//Print the line
+//Print the queue
 void print_fila(Fila *fila){
 
     printf("-Atendimentos pendentes: ");
@@ -93,7 +93,7 @@ void print_fila(Fila *fila){
     putchar('\n');
 }
 
-//Freeing up the line
+//Freeing up the queue
 void free_fila(Fila *fila){
     Node *temp = fila->first;
 
