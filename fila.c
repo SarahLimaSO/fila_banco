@@ -4,6 +4,18 @@
 
 //criterio de parada bubble sort eh se n entrar no if numero ant eh maior q atual
 
+//Open the txt file to read the informations inside it
+FILE* open_file_read(){
+
+    FILE* file = fopen("clientes.txt", "r");
+
+    if(file == NULL){
+        printf("Erro ao abrir o arquivo\n");
+        exit(1);
+    }
+    return file;
+}
+
 //Create a new queue(fila)
 Fila* create_fila(){
     Fila *newfila = malloc(sizeof(Fila));
@@ -21,6 +33,7 @@ Fila* create_fila(){
 
 //Insert a new node in the end of the queue
 void insert_node(Fila *fila, int value){
+
     Node *new = malloc(sizeof(Node));
 
     if(new == NULL){
@@ -86,11 +99,11 @@ int remove_node(Fila *fila){
 //Print the queue
 void print_fila(Fila *fila){
 
-    printf("-Atendimentos pendentes: ");
+    printf("->Atendimentos pendentes: ");
     for(Node *n = fila->first; n != NULL; n = n->next){
         printf("%d ", n->age);
     }
-    putchar('\n');
+    printf("\n\n");
 }
 
 //Freeing up the queue

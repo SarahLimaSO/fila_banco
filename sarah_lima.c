@@ -8,33 +8,7 @@ void clean_buffer(){
     while((trash = getchar()) != '\n' && trash != EOF);
 }
 
-//Read the input anf verify if it's valid
-int read_input(int* age){
-    char end;
-    int valid, input;
-    valid = 0;
-
-    while(!valid){
-        printf("Qual a sua idade?\n");
-
-        input = scanf("%d%c", age, &end);
-
-        if(((input == 2) && (end == '\n')) || (input == 1)){
-            valid = 1;
-        }
-        else if(input == EOF){
-            printf("-Fim das entradas\n\n");
-            break;
-        }
-        else{
-            
-            clean_buffer();
-            printf("Entrada inválida!\n");
-        }
-    }
-    return input;
-}
-
+//Sorts the queue elements in descending order
 void sort_fila(Fila *fila){
 
     //If the queue is empty
@@ -44,6 +18,7 @@ void sort_fila(Fila *fila){
     
     int swap = 1;
    
+   //while there is an exchange of elements the loop continues
     while(swap){
         Node *current = fila->first->next;
         swap = 0;
@@ -75,7 +50,7 @@ void sort_fila(Fila *fila){
 
                 prevNo->previous = current;
                 current->next = prevNo;
-                
+    
                 swap = 1;
             }
             current = current->next;
@@ -84,20 +59,30 @@ void sort_fila(Fila *fila){
 }
 
 int main(){
+    FILE* fileTxt = open_file_read();
+
     Fila *fila = create_fila();
     int age;
 
-    printf("--Welcome to Sarah's bank!\n");
+    printf("* $ **Bem vind@ ao banco Bradesco!** $ *\n\n");
 
-    while(read_input(&age) != EOF){
-        printf("entrou\n");
+    //Reading the informations in the file "clientes.txt"
+     while((fscanf(fileTxt, "%d", &age)) != EOF){
         insert_node(fila, age);
     }
 
-    print_fila(fila);
-    sort_fila(fila);
+    print_fila(fila); //Prints the original queue(fila) accordimg with the info in the file "clientes.txt"
+    sort_fila(fila); //Sorts the queue elements in descending order
     
-    print_fila(fila);
+
+    //Assist(remove) the customers(nodes) one by one until the end of the line
+    while(!empty_fila(fila)){
+        
+        printf("Cliente com idade: %d, foi atendido.\n", remove_node(fila));
+    }
+    
+    printf("\nNenhum atendimento pendente :)\n\n");
     free_fila(fila);
+    fclose(fileTxt);
 
 }

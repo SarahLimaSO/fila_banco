@@ -16,6 +16,9 @@ typedef struct fila{
 //Create a new queue(fila)
 Fila* create_fila();
 
+//Open the txt file to read the informations inside it
+FILE* open_file_read();
+
 //Insert a new node in the end of the queue
 void insert_node(Fila *fila, int value);
 
