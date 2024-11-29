@@ -1,0 +1,14 @@
+primeira troca bem succedida
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Changes to be committed:
+#	new file:   .vscode/launch.json
+#	new file:   .vscode/tasks.json
+#	modified:   a.out
+#	modified:   fila.c
+#	modified:   sarah_lima.c
+#	modified:   testeTAD.c
+#
