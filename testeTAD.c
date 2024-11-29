@@ -32,7 +32,11 @@ int main(){
 
     printf("--Bem vind@ ao Banco Nsei!\n");
 
-    while(read_input(&age)){
+    // while(read_input(&age)){
+    //     printf("entrou\n");
+    //     insert_node(fila, age);
+    // }
+    while(scanf("%d", &age) == 1){
         printf("entrou\n");
         insert_node(fila, age);
     }
@@ -47,5 +51,4 @@ int main(){
     
     printf("\nNenhum atendimento pendente :)\n\n");
     free_fila(fila);
-
 }

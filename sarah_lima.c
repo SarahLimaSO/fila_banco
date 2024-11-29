@@ -8,19 +8,32 @@ void clean_buffer(){
     while((trash = getchar()) != '\n' && trash != EOF);
 }
 
-// int read_input(int* age){
+//Read the input anf verify if it's valid
+int read_input(int* age){
+    char end;
+    int valid, input;
+    valid = 0;
 
-//     printf("Qual a sua idade?\n");
+    while(!valid){
+        printf("Qual a sua idade?\n");
 
-//     if(scanf("%d%*c", age) == 1){
-//         return 1;
-//     }
-    
-//     clean_buffer();
-//     printf("Entrada inválida!\n");
-    
-//     return 0;
-// }
+        input = scanf("%d%c", age, &end);
+
+        if(((input == 2) && (end == '\n')) || (input == 1)){
+            valid = 1;
+        }
+        else if(input == EOF){
+            printf("-Fim das entradas\n\n");
+            break;
+        }
+        else{
+            
+            clean_buffer();
+            printf("Entrada inválida!\n");
+        }
+    }
+    return input;
+}
 
 void sort_fila(Fila *fila){
 
@@ -76,9 +89,11 @@ int main(){
 
     printf("--Welcome to Sarah's bank!\n");
 
-    while((scanf("%d%*c", &age) == 1)){
+    while(read_input(&age) != EOF){
+        printf("entrou\n");
         insert_node(fila, age);
     }
+
     print_fila(fila);
     sort_fila(fila);
     
