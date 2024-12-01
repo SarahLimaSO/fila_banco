@@ -1,4 +1,3 @@
-
 typedef struct fila_No{
     int age;
     struct fila_No *next;
@@ -10,14 +9,13 @@ typedef struct fila{
     Node *last;
 }Fila;
 
+//Open the txt file to read the informations inside it
+FILE* open_file_read();
 
 //FUNCOES DA LISTA (Queue functions)
 
 //Create a new queue(fila)
 Fila* create_fila();
-
-//Open the txt file to read the informations inside it
-FILE* open_file_read();
 
 //Insert a new node in the end of the queue
 void insert_node(Fila *fila, int value);

@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "fila.h"
 
-//criterio de parada bubble sort eh se n entrar no if numero ant eh maior q atual
-
 //Open the txt file to read the informations inside it
 FILE* open_file_read(){
 

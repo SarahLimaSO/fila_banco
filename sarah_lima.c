@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "fila.h"
 
+//Clears the keyboard buffer
 void clean_buffer(){
     char trash;
 
@@ -18,7 +19,7 @@ void sort_fila(Fila *fila){
     
     int swap = 1;
    
-   //while there is an exchange of elements the loop continues
+   //While there is an exchange of elements the loop continues
     while(swap){
         Node *current = fila->first->next;
         swap = 0;
@@ -51,7 +52,7 @@ void sort_fila(Fila *fila){
                 prevNo->previous = current;
                 current->next = prevNo;
     
-                swap = 1;
+                swap = 1; //Signals that a change has occurred
             }
             current = current->next;
         }
@@ -59,7 +60,7 @@ void sort_fila(Fila *fila){
 }
 
 int main(){
-    FILE* fileTxt = open_file_read();
+    FILE* fileTxt = open_file_read(); //Open the file "clientes.txt" in reading mode
 
     Fila *fila = create_fila();
     int age;
@@ -68,7 +69,7 @@ int main(){
 
     //Reading the informations in the file "clientes.txt"
      while((fscanf(fileTxt, "%d", &age)) != EOF){
-        insert_node(fila, age);
+        insert_node(fila, age); //Insert the information into the list
     }
 
     print_fila(fila); //Prints the original queue(fila) accordimg with the info in the file "clientes.txt"
@@ -82,7 +83,7 @@ int main(){
     }
     
     printf("\nNenhum atendimento pendente :)\n\n");
-    free_fila(fila);
-    fclose(fileTxt);
+    free_fila(fila); //Freeing up the queue
+    fclose(fileTxt); //Close the txt file
 
 }
