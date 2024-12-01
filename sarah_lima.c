@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "fila.h"
 
+//ATENÇÃO!! ESSE TRABALHO DEVE SER COMPILADO DA FORMA "gcc sarah_lima.c fila.c"
+
 //Clears the keyboard buffer
 void clean_buffer(){
     char trash;
