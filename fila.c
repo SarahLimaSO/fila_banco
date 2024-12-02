@@ -114,6 +114,7 @@ void free_fila(Fila *fila){
         free(temp);
         temp = t;
     }
+    free(fila);
 }
 
 
