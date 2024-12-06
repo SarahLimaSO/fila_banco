@@ -8,30 +8,25 @@
 ## Instruções de instalação
 
 -Execute o seguinte comando dentro da pasta onde voce deseja instalar o projeto:
-bash
+
 ```
 git clone https://github.com/SarahLimaSO/fila_banco.git
 ```
 
-
 -Entre dentro da pasta do projeto executando o seguinte comando:
 
-bash
 ```
 cd fila_banco
 ```
 
-
 -Compile o arquivo usando o comando:
 
-bash
 ```
 gcc sarah_lima.c fila.c
 ``` 
 
 -Para iniciar o jogo execute o seguite comando:
 
-bash
 ```
 ./a.out
 ```
